@@ -1,0 +1,65 @@
+#include <stdio.h>
+#define PI 3.14
+int rod (float P)
+{
+    float d,ts;
+    printf("\nEnter diameter of rod :");
+    scanf("%f", &d);
+    ts = (4 * P ) / (PI * d * d );
+    printf("\n");
+    printf("Max Tensile stress at rod is %f \n", ts);
+    return 0 ;
+}
+    int pin(float P , float dp){
+    float ss ;
+    //(4*P)/2*(PI*dp*dp);
+    ss = ( 4 * P) /( 2 * (PI * dp * dp));
+    printf("\nMax shear stress at knucle pin is % f" , ss);
+    return 0;
+    }
+    int seye(float P ,float dp)
+    {
+        float t , dh, ts, cs ,ss ;
+        printf("\n");
+        printf("\nEnter the thickness of single eye :");
+        scanf("%f", &t);
+        printf("\nEnter the outer diameter of single eye :");
+        scanf("%f", &dh);
+        ts = P / ( t * (dh - dp));
+        printf("\nTensile stess at weak section is %f", ts);
+          cs = P / (t * dp);
+        printf("\nCrushing stress at weak section is %f ", cs);
+        ss =  2 * P /(t * (dh - dp));
+        printf("\nShear stress at weak section is %f" , ss);
+        return 0;
+    }
+    int deye(float P ,float dp)
+    {
+        float t , D ,ts,cs ,ss;
+        printf("\n");
+        printf("\nEnter the thickness of double eye ");
+        scanf("%f" ,&t);
+        printf("\nEnter the outer Diameter of double eye : ");
+        scanf("%f",&D);
+        ts = P / 2 * (t * ( D - dp ));
+        printf("\nTensile stress at weak section is %f  ", ts);
+        cs = P / 2 * ( t * dp);
+        printf("\nCrushing stress at a weak section is %f", cs );
+        ss = P / ( t * ( D - dp ));
+        printf("\nShear stress at weak section is %f " , ss );
+        return 0 ;
+    }
+int main() {
+    // Write C code here
+    float P , dp;
+    printf("Enter the load :");
+    scanf("%f", &P);
+    rod(P);
+    printf("\nEnter the diameter knucle pin :  ");
+    scanf("%f",&dp);
+    pin(P , dp);
+    seye(P , dp);
+    deye( P , dp );
+
+    return 0;
+}
